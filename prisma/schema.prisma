@@ -1,0 +1,55 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Company {
+  id          Int    @id @default(autoincrement())
+  nameFantasy String
+  cpnj        String @unique
+
+  Providers Provider[]
+}
+
+model CompanyProvider {
+  id          Int    @id @default(autoincrement())
+  nameFantasy String
+  cpnj        String
+
+  provider   Provider @relation(fields: [providerId], references: [id])
+  providerId Int      @unique
+}
+
+model Provider {
+  id        Int         @id @default(autoincrement())
+  type      CompanyType
+  name      String
+  cpfCnpj   String      @unique
+  rg        String?     @unique
+  birthDay  DateTime?
+  createdAt DateTime    @default(now())
+
+  phones Phone[]
+
+  CompanyProvider CompanyProvider?
+
+  Company   Company @relation(fields: [companyId], references: [id])
+  companyId Int
+}
+
+model Phone {
+  id       Int    @id @default(autoincrement())
+  telefone String
+
+  Provider   Provider? @relation(fields: [providerId], references: [id])
+  providerId Int?
+}
+
+enum CompanyType {
+  CPF
+  CNPJ
+}
