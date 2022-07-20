@@ -47,7 +47,6 @@ Para a comunicação API - Banco de Dados foi escolhido o ORM Prisma
 
 ### Endpoints da API
 
-![App Screenshot](https://via.placeholder.com/468x300?text=Docker+Screen+Here)
 
 ### /company
 
