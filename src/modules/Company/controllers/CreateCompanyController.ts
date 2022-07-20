@@ -7,9 +7,9 @@ export class CreateCompanyController {
   async handle(request: Request, response: Response) {
     const { nameFantasy, cnpj } = request.body;
 
-    const createBatteryUseCase = container.resolve(CreateCompanyService);
+    const createCompanyUseCase = container.resolve(CreateCompanyService);
 
-    const company = await createBatteryUseCase.execute({ nameFantasy, cnpj });
+    const company = await createCompanyUseCase.execute({ nameFantasy, cnpj });
 
     return response.json(company);
   }

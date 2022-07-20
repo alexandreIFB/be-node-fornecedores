@@ -18,7 +18,7 @@ model Company {
 model CompanyProvider {
   id          Int    @id @default(autoincrement())
   nameFantasy String
-  cnpj        String
+  cnpj        String @unique
 
   provider   Provider @relation(fields: [providerId], references: [id])
   providerId Int      @unique
