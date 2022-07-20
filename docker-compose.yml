@@ -1,16 +1,29 @@
-version: '3.8'
-services:
+version: '3.7'
 
-  postgres:
-    image: postgres:10.3
+services:
+  database_provider:
+    image: postgres
+    container_name: database_provider
     restart: always
+    ports:
+      - 5432:5432
     environment:
       - POSTGRES_USER=providers
       - POSTGRES_PASSWORD=prisma
     volumes:
-      - postgres:/var/lib/postgresql/data
+      - pgdata:/data/postgres
+  app:
+    build: .
+    container_name: api_providers
     ports:
-      - '5432:5432'
+      - 3000:3000
+    volumes:
+      - .:/usr/app
+    links:
+      - database_provider
+    depends_on:
+      - database_provider
 
 volumes:
-  postgres:
+  pgdata:
+    driver: local

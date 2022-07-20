@@ -10,7 +10,7 @@ generator client {
 model Company {
   id          Int    @id @default(autoincrement())
   nameFantasy String
-  cpnj        String @unique
+  cnpj        String @unique
 
   Providers Provider[]
 }
@@ -18,7 +18,7 @@ model Company {
 model CompanyProvider {
   id          Int    @id @default(autoincrement())
   nameFantasy String
-  cpnj        String
+  cnpj        String
 
   provider   Provider @relation(fields: [providerId], references: [id])
   providerId Int      @unique
