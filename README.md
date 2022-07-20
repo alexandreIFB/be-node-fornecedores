@@ -97,6 +97,10 @@ VALIDAÇÃO REGRA DE NEGOCIO:
 
 ![App Screenshot](screenshots/get-provider-ok.png)
 
+* Get - Listagem Com filtros
+
+![App Screenshot](screenshots/get-provider-filters.png)
+
 * Cadastro da Empresa a parte
 
 ![App Screenshot](screenshots/post-providerCompany-ok.png)
